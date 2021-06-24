@@ -2,11 +2,11 @@
 // @name         必应壁纸下载
 // @author       Yugle
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.2.3
 // @description  必应壁纸下载：点击必应首页右下ⓘ符号即可下载当前必应壁纸
 // @match        *.bing.com/*
-// @note         Version 1.0    必应壁纸下载
-// @icon         https://img2.baidu.com/it/u=1596561636,4277282949&fm=26&fmt=auto&gp=0.jpg
+// @note         Version 1.2.3    必应壁纸下载
+// @icon         https://cn.bing.com/favicon.ico
 // ==/UserScript==
 
 (function (){
@@ -16,17 +16,17 @@
 
 	function getImgUrl(){
 		var background = document.getElementById("bgLink");
-		imgUrl = background.href;
+		var imgUrl = background.href;
 		
 		return imgUrl;
 	};
 
-	var currentUrl = "https://cn.bing.com/"
-	var imgUrl = getImgUrl();
-
+	const currentUrl = "https://cn.bing.com/"
 	var nextButton = document.getElementById("sh_igr");
 	
 	function refreshDownloadButton(){
+		var imgUrl = getImgUrl();
+
 		if(nextButton.hasAttribute("aria-disabled") == false){
 			var backgroundDiv = document.getElementById("bgDiv");
 			var style = backgroundDiv.getAttribute("style").split(";");
